@@ -1,12 +1,26 @@
-import { expect } from "chai"
+import app from '../src/index'
+import chai from 'chai'
+import chaiHttp from 'chai-http'
+import {
+  expect
+} from "chai"
 import testFunction from "../src/index"
 
-describe("Boilerplate tests", () => {
-  describe("import function", () => {
+chai.use(chaiHttp);
+chai.should();
 
-    it("should successfully import and call a function", () => {
-      const response = testFunction();
-      expect(response).to.equal("success")
-    })
-  })
+describe('Addresses', () => {
+
+  describe('GET', () => {
+    // TODO: Find out exactly how done behaves
+    it('should return a 200', (done) => {
+      chai.request(app)
+        .get('/addresses')
+        .end((err, res) => {
+          console.log(res.body);
+          res.should.have.status(200);
+          done();
+        });
+    });
+  });
 })

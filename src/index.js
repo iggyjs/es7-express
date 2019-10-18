@@ -4,7 +4,7 @@ import helmet from 'helmet'
 
 import addressesRoutes from './routes/addresses.route'
 
-const db = require("./db");
+// const db = require("./db");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -37,8 +37,11 @@ app.use('/addresses', addressesRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server listening on PORT: ${PORT} ...`);
-    db()
-    .then(() => {
-        console.log('Connected to MongoDB')
-    });
+    // db()
+    // .then(() => {
+    //     console.log('Connected to MongoDB')
+    // });
 });
+
+// We export our app so we can pull it in to our tests
+export default app
