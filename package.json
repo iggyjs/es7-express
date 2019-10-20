@@ -6,8 +6,9 @@
   "scripts": {
     "build": "babel src -d dist",
     "develop": "nodemon --exec babel-node src/index.js",
-    "serve": "node var/app/index.js",
-    "test": "npm run build && mocha --require @babel/register --exit"
+    "test": "npm run build && mocha --require @babel/register --exit",
+    "serve:container": "node index.js",
+    "start:container": "npm run build && docker-compose build && docker-compose up"
   },
   "repository": {
     "type": "git",
